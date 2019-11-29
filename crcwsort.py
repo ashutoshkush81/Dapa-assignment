@@ -15,7 +15,7 @@ ci = np.zeros(n, dtype=int)
 # sequential function ..
 def sequential():
     c = np.zeros(n, dtype=int)
-    sq.sequilizer()
+    sq.sequilizer(0)
 
     # step 1 start..
     for i in range(n):

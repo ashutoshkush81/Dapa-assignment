@@ -60,12 +60,14 @@ def parallel_select(arr, k, x):
         if len(L) >= k:
             parallel_select(L, k, x)
         elif len(L)+len(E) >= k:
-            # print("elif conditions : ", m)
             kth_element = m
             return 
         else:
             parallel_select(G, k-len(L)-len(E), x)
-        # print("m ka value h" , m)
+
+def make_selection_parallel(array , k , x):
+    parallel_select(array , k , x)
+    return kth_element
 
 if __name__=="__main__":
 
@@ -73,6 +75,7 @@ if __name__=="__main__":
     # print(sorted(arr))
     
     # arr = [1,2,4]
-    parallel_select(arr, 21, 0.52204000)
+    # parallel_select(arr, 21, 0.52204000)
     # print(parallel_select(arr, 21, 0.52204000))
+    ans = make_selection_parallel(arr , 21 , 0.52204000)
     print(kth_element)
