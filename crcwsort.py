@@ -4,6 +4,7 @@ import seqentializer as sq
 import time
 import math
 import numpy as np
+from matplotlib import pyplot as plt
 
 print("No. of Processors : ", mp.cpu_count())
 # declare  n and array global ..
@@ -81,7 +82,13 @@ if __name__ == '__main__':
     parallel(array, n)
     parallel_req = time.time() - parallel_start
     print(parallel_req)
-    
 
-    print(parallel_req / seq_req)
-    print(seq_req / parallel_req)
+    plt.bar([2],[seq_req*10],label="Seqential_CRCW",color='g',width=1)
+    plt.bar([4],[parallel_req*10],label="Parallel_CRCW", color='r',width=.5)
+    plt.legend()
+    plt.xlabel('Diff. Algo.')
+    plt.ylabel('Time(in 10*sec)')
+    plt.title('Crcw Implementation')
+    plt.show()
+    
+    print("speed_up : ",seq_req / parallel_req)

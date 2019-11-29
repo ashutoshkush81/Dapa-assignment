@@ -5,9 +5,10 @@ import time
 import math
 import numpy as np
 from parallelselection import make_selection_parallel
+from matplotlib import pyplot as plt
 
 N = mp.cpu_count()
-n = 16
+n = 160 
 x = math.log(n / N, n)
 k = int(pow(2, math.ceil(1 / x)))
 print("No. of cpu :",N)
@@ -171,6 +172,13 @@ if __name__=='__main__':
     parallel_end = time.time() - parallel_start
     print(parallel_end)
     print(array)
+    plt.bar([2],[sequential_end*10],label="Seqential_EREW",color='g',width=1)
+    plt.bar([4],[parallel_end*10],label="Parallel_EREW", color='r',width=.5)
+    plt.legend()
+    plt.xlabel('Diff. Algo.')
+    plt.ylabel('Time(in 10*sec)')
+    plt.title('EREW Implementation')
+    plt.show()
 
     speed_up = sequential_end / parallel_end 
     print("speed_up : ", speed_up)
